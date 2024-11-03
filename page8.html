@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./ut.css">
+
+  
+</head>
+
+
+<body>
+
+<!-- Site navigation menu -->
+<ul class="navbar">
+</ul>
+
+
+
+
+
+<!-- Main content 
+https://www.jotform.com/blog/how-to-add-captcha-to-google-forms/
+-->
+<div class="box">
+
+
+To authenticate yourself, identify what the sound is by listening to the sound, typing the matching name, and then submitting.
+
+
+</div>
+
+<!--Images: GitHub\usabilitytesting\media\captcha-images\public-domain-www.publicdomainpictures.net\
+Sounds: GitHub\usabilitytesting\media\captcha-sounds\
+
+
+Figure 1:
+
+Table:-->
+
+<table>
+  <tr>
+    <td>
+    <img src="./media/captcha-images/public-domain-www-publicdomainpictures-net/cat.jpg" width="200" height="200" id="myPicture" alt="">
+	</td>
+    <td> 
+	   Please type the name for the sound in text box below.<br>
+		<input type="text" id="image_guess_input" name="image_guess_input">
+	</td>
+  </tr>
+  <tr>
+    <td>
+          <button class="play-button"> Play Sound</button>
+		  
+		<div style="display:none">
+		Please select from <br>following sound list: <br>bird, cat, fireworks, dog.<br>
+		<select id = "choiceList">  
+		<option> bird </option>  
+		<option> cat </option>  
+		<option> fireworks </option>  
+		<option> dog </option>  
+		</select>  
+		</div>
+	
+	</td>
+    <td> <button class="submit-button"> Submit</button>
+	</td>
+  </tr>
+</table> 
+
+<!--
+Javascript
+1.	Select image at random from set
+2.	Ensure image file name on list
+3.	Button Play: play sound file with matching image file name when clicked
+4.	Button Submit: validate selected dropdown list name matches sound file name
+
+
+Figure 2:
+-->
+
+
+
+
+<script src="./page8script.js"></script>
+
+ <!--<script src="/__/firebase/5.5.7/firebase-app.js"></script>
+ <script src="/__/firebase/5.5.7/firebase-auth.js"></script>
+ <script src="/__/firebase/5.5.7/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#reserved-urls -->
+
+    <!-- Initialize Firebase -->
+<!-- <script src="/__/firebase/init.js"></script>
+-->	
+
+</body>
+</html>
+
