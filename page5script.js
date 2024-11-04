@@ -79,7 +79,7 @@ function onSubmitButtonClick() {
 	if(selected_image.includes(selected_value)){
                 alert('Success!');
 		//comments = prompt('Success! Type any comments here'); 
-        match = 'Success';
+                match = 'Success';
 	}
 	else{
                 alert('Please Try Again!');
