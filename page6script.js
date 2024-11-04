@@ -77,11 +77,13 @@ function onSubmitButtonClick() {
 	//alert('selected value is ' + selected_value);
 	
 	if(selected_image.includes(selected_value)){
-		comments = prompt('Success! Type any comments here'); 
+		alert('Success!');
+		//comments = prompt('Success! Type any comments here'); 
         match = 'Success';
 	}
 	else{
-		comments = prompt('Please Try Again! Type any comments here'); 
+		alert('Please Try Again!');
+		//comments = prompt('Please Try Again! Type any comments here'); 
 		match = 'Fail';
 	}
 	console.log('onSubmitButtonClick after prompt!');
