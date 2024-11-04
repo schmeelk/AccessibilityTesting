@@ -77,7 +77,7 @@ function onSubmitButtonClick() {
 	let comments = 'n/a';
 	//alert('selected value is ' + selected_value);
 	
-	alert(input_from_user.value);
+	//alert(input_from_user.value);
 	let input_from_user_value = input_from_user.value
 	input_from_user.value = "";
 	if(selected_image.includes(input_from_user_value)){
