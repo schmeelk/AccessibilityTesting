@@ -81,11 +81,13 @@ function onSubmitButtonClick() {
 	let input_from_user_value = input_from_user.value
 	input_from_user.value = "";
 	if(selected_image.includes(input_from_user_value)){
-		comments = prompt('Success! Type any comments here '); 
+		alert('Success!');
+		//comments = prompt('Success! Type any comments here '); 
         match = 'Success';
 	}
 	else{
-		comments = prompt('Please Try Again! Type any comments here ' + input_from_user_value + ' selected image:' + selected_image); 
+		alert('Please Try Again!');
+		//comments = prompt('Please Try Again! Type any comments here ' + input_from_user_value + ' selected image:' + selected_image); 
 		match = 'Fail';
 	}
 	console.log('onSubmitButtonClick after prompt!');
