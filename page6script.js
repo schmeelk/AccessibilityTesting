@@ -10,7 +10,6 @@ let audio;
 
 window.addEventListener('load', choosePic);
 
-
 var myPix = new Array(
     "bird.jpg",
     "cat.jpg",
