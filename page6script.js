@@ -12,7 +12,6 @@ window.addEventListener('load', choosePic);
 
 
 var myPix = new Array(
-    "select from the below",
     "bird.jpg",
     "cat.jpg",
     "fireworks.jpg", 
@@ -22,9 +21,6 @@ var myPix = new Array(
 
 function choosePic() {
     const randomNum = Math.floor(Math.random() * myPix.length);
-    if (randomNum = 0){
-      randomNum = 1;
-    }
     selected_image = myPix[randomNum];
     document.getElementById("myPicture").src = `./media/captcha-images/public-domain-www.publicdomainpictures.net/${selected_image}`;
 
