@@ -21,7 +21,7 @@ var myPix = new Array(
 
 
 function choosePic() {
-    const randomNum = Math.floor(Math.random() * myPix.length);
+    let randomNum = Math.floor(Math.random() * myPix.length);
 	if(randomNum == 0){
 			randomNum = 1;
 	}
