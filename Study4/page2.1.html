@@ -26,50 +26,41 @@ To authenticate yourself, identify what the sound is by listening to the sound, 
   
 </div>
 
+ <section role="form" aria-label="Math calculation form">
+        <div class="input-group">
+            <label for="x-value">X Value:</label>
+            <input type="number" id="x-value" name="x-value" aria-label="Enter X value" required>
+        </div>
+        <div class="input-group">
+            <label for="y-value">Y Value:</label>
+            <input type="number" id="y-value" name="y-value" aria-label="Enter Y value" required>
+        </div>
+        <button type="button" onclick="calculate()" aria-label="Calculate result">Calculate</button>
+    </section>
+    <math>
+        <!-- <msqrt>
+            <mi>&sum;</mi>
+            <mo> - </mo>
+            <mn> 1 </mn>
+        </msqrt> -->
+        <mrow id="equation">
+            <!-- <mo stretchy="false">∫</mo>
+            <mo stretchy="false">(</mo> -->
+            <!-- <msup> -->
+            <mi id="ml-x-value">x</mi>
+            <!-- </msup> -->
+            <mo>x</mo>
+            <mi id="ml-y-value">y</mi>
+            <!-- <mo stretchy="false">)</mo>
+            <mi>dx</mi> -->
+        </mrow>
+    </math>
+
 
 <table>
   <tr>
     <td>
-   function calculate() {
-    
-    // Read values from inputs
-    const xInput = document.getElementById('x-value');
-    const yInput = document.getElementById('y-value');
-    const mlXInput = document.getElementById('ml-x-value');
-    const mlYInput = document.getElementById('ml-y-value');
-    const x = parseFloat(xInput && xInput.value) || 0;
-    const y = parseFloat(yInput && yInput.value) || 0;
-
-    // Compute result (example: sum)
-    const result = x * y;
-
-    // Find or create result container
-    let resultEl = document.getElementById('result');
-    if (!resultEl) {
-        let equalOperator = document.createElement('mo');
-        equalOperator.textContent = "=";
-
-        resultEl = document.createElement('mn');
-        resultEl.id = 'result';
-        resultEl.setAttribute('aria-live', 'polite');
-        // Insert after the form section
-        const equation = document.getElementById('equation');
-        if (equation) {
-            equation.appendChild(equalOperator);
-            equation.appendChild(resultEl);
-        }
-        else document.body.appendChild(resultEl);
-    }
-
-    mlXInput.textContent = x;
-    mlYInput.textContent = y;
-    resultEl.textContent = result;
-    MathJax.typeset([mlXInput, mlYInput, resultEl]);
-    return result;
-}
-
-// Expose for inline handlers in older browsers
-window.calculate = calculate;
+  
     <td> 
 	    <button class="play-button"> Play Sound</button>
 	</td>
@@ -91,7 +82,7 @@ Javascript
 -->
 
 
- 
+ <script src="page2.1script.js"></script>
 </body>
 </html>
 
