@@ -58,7 +58,7 @@ function onPlaySoundButtonClick() {
 	//alert('Play Sound Button Submit clicked!');
     solve_start = Date.now(); 
     play_button_attempt_count = play_button_attempt_count + 1;
-	soundPath = 	`./media/captcha-sounds/pixabay-com-sound-effects/Long/${selected_image.replace('.jpg', '.mp3')}`;
+	soundPath = 	`./media/captcha-sounds/pixabay-com-sound-effects/Med/Animals/${selected_image.replace('.jpg', '.mp3')}`;
 	console.log(soundPath);
 	
 	audio = new Audio(soundPath);
