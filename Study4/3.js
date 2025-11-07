@@ -5,21 +5,10 @@ let submit_attempt_count = 0;
 let play_button_attempt_count = 0;
 let listOfSubmitObjects = [];
 let selected_image = 'cat.jpg';
-let selected_audio = '';
 let soundPath = '';
-let audio = new Audio();
-let randomAudioChoiceLength = 4;
-let categoryChoice = 'Animal';
-let userSelectedSound = 'Animal';
-let randomNum = 1;
+let audio;
 
-
-window.addEventListener('load', setup);
-
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('sounds').selectedIndex = 0; // Reset to first option
-    document.getElementById('soundChoice').selectedIndex = 0;
-  });
+window.addEventListener('load', choosePic);
 
 
 var myPix = new Array(
@@ -30,99 +19,20 @@ var myPix = new Array(
 	"dog.jpg"
 );
 
-const sounds = { 
-  'Animal': [
-    'Bird',
-    'Cat',
-    'Dog',
-    'Duck'
-  ],
-  
-  'Instrument': [
-    'Piano',
-    'Drum',
-    'Trumpet',
-    'Guitar'
-  ],
-  
-  'MorseCode': [
-    'Dit',
-    'Dit-Dah',
-    'Dah-Dah-Dit',
-    'Dah-Dit-Dit-Dit'
-  ]
 
-};
-
-
-window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('sounds').focus();
-  });
-
-
-let soundsMenu = document.getElementById("sounds");
-let soundChoiceMenu = document.getElementById("soundChoice");
-
-
-
-
-soundsMenu.addEventListener("change", (e) => {
-   
-   soundChoiceMenu.innerHTML = "";
-   console.log(soundChoiceMenu);
-
-   categoryChoice = event.target.value;
-   
-   console.log(sounds[categoryChoice]);
-
-   const soundsInCategory = sounds[categoryChoice];
-
-   soundsInCategory.forEach( (soundName) => {
-
-          console.log(soundName);
-          const option = document.createElement("option");
-          option.value = soundName;
-	  option.textContent = soundName;
-          userSelectedSound = soundName;
-          soundChoiceMenu.appendChild(option);
-
-});
-    randomNum = Math.floor(Math.random() * randomAudioChoiceLength);
-    console.log('Random number chosen ' + randomNum);
-
-   
-});
-
-//console.log(soundsMenu);
-//console.log(soundChoiceMenu); 
-
-function setup(){
+function choosePic() {
+    let randomNum = Math.floor(Math.random() * myPix.length);
+	if(randomNum == 0){
+			randomNum = 1;
+	}
+    selected_image = myPix[randomNum];
+    document.getElementById("myPicture").src = `./media/captcha-images/public-domain-www.publicdomainpictures.net/${selected_image}`;
 
     const playButtons = document.querySelector('.play-button');
     playButtons.addEventListener('click', onPlaySoundButtonClick);
 
     const submitButtons = document.querySelector('.submit-button');
     submitButtons.addEventListener('click', onSubmitButtonClick);
-
-
-}
-
-
-function choosePic() {
-    //let randomNum = Math.floor(Math.random() * myPix.length);
-	//if(randomNum == 0){
-	//		randomNum = 1;
-	//}
-    //selected_image = myPix[randomNum];
-    //document.getElementById("myPicture").src = `./media/captcha-images/public-domain-www.publicdomainpictures.net/${selected_image}`;
-
-    //TODO: Add selected_audio value
-
-    //const playButtons = document.querySelector('.play-button');
-    //playButtons.addEventListener('click', onPlaySoundButtonClick);
-
-    //const submitButtons = document.querySelector('.submit-button');
-    //submitButtons.addEventListener('click', onSubmitButtonClick);
 };
 
 
@@ -133,8 +43,7 @@ function SubmitDetails(match, comments, selectedTextValue) {
   this.submit_time = submit_time;
   this.solve_start_time = solve_start;
   this.solve_end_time = solve_end;
-  this.imageFileName = selected_image; 
-  this.audioFileName = selected_audio;
+  this.imageFileName = selected_image;
   this.soundFileName = soundPath;
   this.textNames = selectedTextValue;
   this.accurate = match;
@@ -147,42 +56,13 @@ function SubmitDetails(match, comments, selectedTextValue) {
 
 function onPlaySoundButtonClick() {
 	//alert('Play Sound Button Submit clicked!');
-        solve_start = Date.now(); 
-        play_button_attempt_count = play_button_attempt_count + 1;
-
-        //TODO: Get Category
-        //TODO:Random select sound from category
-        //TODO:Get sound  from 
-        //TODO: Add selected_audio value
-
-
-
-  	 //TODO: Add selected_audio value
-
-
-
-
-         selected_audio = sounds[categoryChoice][randomNum].toLowerCase();
-         console.log('random selected audio ' + selected_audio);
-
-   	 //soundPath = `./media/captcha-images/public-domain-www.publicdomainpictures.net/${categoryChoice}s/${selected_audio}`;
-         //if(categoryChoice === 'MorseCode'){
-         //  soundPath = 	`./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}s/morse-${selected_audio}.wav`;
-         //}else{
-         //  soundPath = 	`./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}s/${selected_audio}.mp3`;
-         //}
-
-        soundPath = 	`./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}s/${selected_audio}.mp3`;
-
+    solve_start = Date.now(); 
+    play_button_attempt_count = play_button_attempt_count + 1;
+	soundPath = 	`./media/captcha-sounds/pixabay-com-sound-effects/Med/Animals/${selected_image.replace('.jpg', '.mp3')}`;
 	console.log(soundPath);
 	
-	
-        audio.src = soundPath;
-        audio.pause();
-        audio.currentTime = 0;
-        audio.play();
-        console.log("the end of onPlaySoundButtonClick");
-
+	audio = new Audio(soundPath);
+	audio.play();  //2seconds look at API ... edit media for different lenths  ... study A/B testing 
 }
 
 function onSubmitButtonClick() {
@@ -194,18 +74,13 @@ function onSubmitButtonClick() {
 	submit_time = solve_end - solve_start;
 	submit_attempt_count = submit_attempt_count + 1;
     console.log(submit_time);
-	let mylist = document.getElementById("soundChoice");  
+	let mylist = document.getElementById("choiceList");  
     let selected_value = mylist.options[mylist.selectedIndex].text;  
 	let match = 'Fail';
 	let comments = 'n/a';
 	//alert('selected value is ' + selected_value);
 	
-        //TODO: selected_image should be selected_audio
-        //TODO: Add selected_audio value
-        console.log("selected_audio is " + selected_audio);
-        console.log("selected_value is " + selected_value);
-
-	if(selected_audio.toLowerCase() === selected_value.toLowerCase()){
+	if(selected_image.includes(selected_value)){
 		alert('Success!');
 		//comments = prompt('Success! Type any comments here'); 
         match = 'Success';
