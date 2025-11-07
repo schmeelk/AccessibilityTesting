@@ -155,3 +155,9 @@ projects.projectRight.ul.li {
 	border-bottom:1px solid black;
 }
 
+
+table {
+    border-collapse: separate; /* Important! */
+    border-spacing: 30px; /* Horizontal and vertical spacing */
+  }
+
