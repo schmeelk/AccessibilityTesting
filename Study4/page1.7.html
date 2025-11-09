@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound Category Authentication</title>
+  <link rel="stylesheet" href="ut7.css">
+</head>
+<body>
+
+<a href="#mainContent" class="skip-link">Skip to main content</a>
+
+<nav role="navigation" aria-label="Main navigation"><ul class="navbar"></ul></nav>
+
+<main id="mainContent" role="main">
+  <p>To authenticate yourself, select the preferred sound category (Animal, Instrument, or Morse Code), play the sound, identify and match the sound to list name after listening to the sound, and then submit the choice for validation.</p>
+</main>
+
+<table role="presentation" aria-describedby="tableCaption">
+  <!-- <caption id="tableCaption">Sound Category Authentication Challenge</caption> -->
+  <tbody>
+    <tr>
+      <td>
+        <label id="soundsLabel" for="sounds">Choose a sound category:</label>
+        <select name="sounds" id="sounds" aria-label="Choose a sound category for the challenge" aria-labelledby="soundsLabel">
+          <option value="Animal">Animal</option>
+          <option value="Instrument">Instrument</option>
+          <option value="MorseCode">Morse Code</option>
+        </select>
+      </td>
+      <td>
+        <button role="button" class="play-button" type="button" aria-label="Play the selected sound" aria-describedby="soundsLabel">Play Sound</button>
+      </td>
+      <td>
+        <label id="soundChoiceLabel" for="soundChoice">Select the object that made the sound:</label>
+        <select name="soundChoice" id="soundChoice" aria-label="Select the object that produced the sound" aria-labelledby="soundChoiceLabel">
+          <option value="Bird">Bird</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+          <option value="Duck">Duck</option>
+        </select>
+      </td>
+      <td>
+        <button role="button" class="submit-button" type="button" aria-label="Submit your choice for validation" aria-describedby="soundChoiceLabel">Submit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Visible and accessible feedback -->
+<p id="statusMessage" aria-live="polite"></p>
+
+<script src="page1.6.script.js"></script>
+</body>
+</html>
