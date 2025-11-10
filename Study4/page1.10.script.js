@@ -101,12 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedValue = soundChoiceMenu.value;
     if (selectedAudio.toLowerCase() === selectedValue.toLowerCase()) {
       statusMessage.textContent = 'Success! Your choice matches the sound.';
+      soundsMenu.focus();
     } else {
       statusMessage.textContent = 'Incorrect. Please try again.';
+      soundChoiceMenu.focus();
     }
     statusMessage.style.backgroundColor = '#000';
     statusMessage.style.color = '#fff';
-    soundsMenu.focus();
   });
 
   // Keyboard accessibility for buttons
