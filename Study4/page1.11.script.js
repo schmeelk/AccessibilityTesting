@@ -16,13 +16,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let randomNum = 0;
     let audio = new Audio();
     let inputMethod = 'mouse';
-    let touchStartY = 0;
-    let isScrolling = false;
+	let touch = 0;
+	let dx = 0;
+	let dy = 0;
+	let distance = 0;
+	let touchStartX = 0;
+	let touchStartY = 0;
+	let touchEndX = 0;
+	let touchEndY = 0;
+	let isMoving = false;
+
 
     function updateSoundChoices() {
         soundsMenu.focus();
         touchStartY = 0;
-        isScrolling = false;
+		touchStartY = 0;
+        isMoving = false;
         soundChoiceMenu.innerHTML = '';
         sounds[categoryChoice].forEach(soundName => {
             const option = document.createElement('option');
@@ -57,10 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Detect input method
     window.addEventListener('keydown', () => inputMethod = 'keyboard');
     window.addEventListener('mousedown', () => inputMethod = 'mouse');
-    window.addEventListener('touchstart', (e) => {
-        inputMethod = 'touchstart';
-        touchStartY = e.touches[0].clientY;
-    });
+    window.addEventListener('touchstart', () => inputMethod = 'touchstart');
     window.addEventListener('touchmove', () => inputMethod = 'touchmove');
     window.addEventListener('touchend', () => inputMethod = 'touchend');
 
@@ -80,18 +86,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Touch events
+    soundsMenu.addEventListener('touchstart', (e) => {
+		touch = e.touches[0];
+		touchStartX = touch.clientX;
+		touchStartY = touch.clientY;
+		isMoving = false;
+		logMessage("in touchmove");
+    });
+	
     soundsMenu.addEventListener('touchmove', (e) => {
-        const touchCurrentY = e.touches[0].clientY;
-        if (Math.abs(touchCurrentY - touchStartY) > 10) {
-            isScrolling = true;
-        }
+		isMoving = true;
+		touch = e.touches[0];
+		touchEndX = touch.clientX;
+		touchEndY = touch.clientY;
 		logMessage("in touchmove");
     });
 
     soundsMenu.addEventListener('touchend', (event) => {
-        if (!isScrolling) {
-            soundChange(event);
-        }
+		if (isMoving) {
+			dx = Math.abs(touchEndX - touchStartX);
+			dy = Math.abs(touchEndY - touchStartY);
+			distance = Math.sqrt(dx * dx + dy * dy);
+
+			if (distance > 10) { // threshold to avoid false positives
+				console.log("Selection or gesture detected");
+				// trigger selection logic
+				soundChange(event);
+			}
+		}
 		logMessage("in touchend");
     });
 
