@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function updateSoundChoices() {
+	console.log("Updating sound choices");
+	soundsMenu.focus();
     soundChoiceMenu.innerHTML = '';
     sounds[categoryChoice].forEach(soundName => {
       const option = document.createElement('option');
@@ -34,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('soundChoice').selectedIndex = 0;
   window.addEventListener('keydown', () => inputMethod = 'keyboard');
   window.addEventListener('mousedown', () => inputMethod = 'mouse');
-  soundsMenu.focus();
+  
   updateSoundChoices();
 
   soundsMenu.addEventListener('change', (event) => {
@@ -51,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         soundChange();
     }
   });
+  
+  console.log('Focused element:', document.activeElement.tagName, document.activeElement.id);
  
   function soundChange() {
     categoryChoice = event.target.value;
@@ -102,6 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (selectedAudio.toLowerCase() === selectedValue.toLowerCase()) {
       statusMessage.textContent = 'Success! Your choice matches the sound.';
       soundsMenu.focus();
+	  //const start = Date.now();
+	  //while (Date.now() - start < 5000) {
+       // Do nothing, just wait
+	  //}
+       //location.reload();
     } else {
       statusMessage.textContent = 'Incorrect. Please try again.';
       soundChoiceMenu.focus();
