@@ -85,12 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(touchCurrentY - touchStartY) > 10) {
             isScrolling = true;
         }
+		logMessage("in touchmove");
     });
 
     soundsMenu.addEventListener('touchend', (event) => {
         if (!isScrolling) {
             soundChange(event);
         }
+		logMessage("in touchend");
     });
 
     // Play button
@@ -136,14 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-// Reload button
-reloadButton.addEventListener('click', () => {
-    setTimeout(() => {
-        // Remove query parameters before reload
-        const cleanUrl = window.location.origin + window.location.pathname;
-        window.location.href = cleanUrl; // Reload with clean URL
-    }, 1000); // Wait 1 second before reload
-});
+	// Reload button
+	reloadButton.addEventListener('click', () => {
+		console.log("Reload button click detected");
+        console.log("Current URL before reload:", window.location.href);
+        setTimeout(() => {
+                const cleanUrl = window.location.origin + window.location.pathname;
+                console.log("Reloading with clean URL:", cleanUrl);
+                window.location.href = cleanUrl;
+            }, 5000);
+        });
+
 
 
     // Keyboard accessibility for buttons

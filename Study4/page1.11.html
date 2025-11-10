@@ -17,7 +17,7 @@
     <p>To authenticate, choose a sound category, play the sound, identify it on list, and submit your choice.</p>
 
     <h2 id="puzzle">Puzzle</h2>
-    <form role="form" aria-labelledby="puzzle">
+    <form role="form" method="post" aria-labelledby="puzzle">
      
 <div class="form-group" role="group" aria-label="Sound category selection">
         <label for="sounds">Choose a sound category:</label>
@@ -38,13 +38,13 @@
       <button type="button" class="submit-button" aria-label="Submit choice" role="button">Submit</button>
 
       <div id="statusMessage" role="status" aria-live="polite"></div>
-	   <br>
-	   <br>
-	   <br>
+
 	   <button class="reload-button">Reload Page</button>
     </form>
   </main>
 
+
+  <div id="debug" > </div>
 
 
   <script src="page1.11.script.js"></script>
