@@ -26,6 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	let touchEndY = 0;
 	let isMoving = false;
 
+  
+ if (window.location.search) {
+        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+
+
 
     function updateSoundChoices() {
         soundsMenu.focus();
@@ -33,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		touchStartY = 0;
         isMoving = false;
         soundChoiceMenu.innerHTML = '';
+		console.log("UpdateSoundChoices with sounds[categoryChoice] " + sounds[categoryChoice]);
         sounds[categoryChoice].forEach(soundName => {
             const option = document.createElement('option');
             option.value = soundName;
@@ -51,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function soundChange(event) {
+		console.log("In soundChange and event.target.value is " + event.target.value);
         categoryChoice = event.target.value;
         updateSoundChoices();
         statusMessage.textContent = `Sound category changed to ${categoryChoice}.`;
@@ -134,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sound choice menu
     soundChoiceMenu.addEventListener('change', (event) => {
         if (inputMethod === 'mouse' || event.key === 'Enter') {
-            soundChange(event);
+            submitButton.focus();
         }
     });
 
@@ -164,11 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	reloadButton.addEventListener('click', () => {
 		console.log("Reload button click detected");
         console.log("Current URL before reload:", window.location.href);
-        setTimeout(() => {
-                const cleanUrl = window.location.origin + window.location.pathname;
-                console.log("Reloading with clean URL:", cleanUrl);
-                window.location.href = cleanUrl;
-            }, 5000);
+        window.location.href = "https://schmeelk.github.io/AccessibilityTesting/Study4/page1.11.html";
+		console.log("Current URL after reload:", window.location.href);
         });
 
 
