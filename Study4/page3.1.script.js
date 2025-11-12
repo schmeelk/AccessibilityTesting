@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Play button
     playButton.addEventListener('click', () => {
         selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
-        const soundPath = `./media/captcha-sounds/openart-ai/Rachel_American/Words/${categoryChoice}/audio-${selectedAudio}.mp3`;
+        const soundPath = `./media/captcha-sounds/openart-ai/Rachel_American/${categoryChoice}/audio-${selectedAudio}.mp3`;
 		console.log(soundPath);
         audio.src = soundPath;
         audio.pause();
