@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./ut2.11.css">
+
+  
+</head>
+
+
+<body>
+
+<!-- Site navigation menu -->
+<ul class="navbar">
+</ul>
+
+
+
+<div class="box">
+
+
+
+
+
+</div>
+
+
+
+<table role="presentation">
+  <caption>To authenticate yourself, please complete the math equation below and submit.</caption>
+  <tbody>
+
+    <tr>
+      <td>
+        <p>The math expression is:</p>
+        <p id="expression" aria-live="polite"></p>
+      </td>
+	      </tr>
+		      <tr>
+      <td>
+  <h2>Calculate the value of:</h2>
+  <p id="varValue"></p>
+  <p id="expression"></p>
+
+  <form id="guessForm">
+    <label for="guessInput">Your guess:</label>
+    <input type="number" id="guessInput" required />
+    <button type="submit">Submit</button>
+  </form>
+        </form>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+			<div class="form-group" id="statusMessage" role="status" aria-live="polite"></div>
+        <p id="result" aria-live="polite"></p>
+
+        <button id="newExpressionBtn" aria-label="Generate a new math expression">
+          Generate New Expression
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<script src="./page2.12script.js"></script>
+	
+
+</body>
+</html>
+
