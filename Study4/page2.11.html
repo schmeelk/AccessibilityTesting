@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./ut2.11.css">
+
+  
+</head>
+
+
+
+<body>
+
+<!-- Site navigation menu -->
+<ul class="navbar">
+</ul>
+
+<div class="box">
+  <h1>Math Authentication</h1>
+  <h2>Instructions</h2>
+  <p>To authenticate yourself, please complete the math equation below and submit your answer.</p>
+
+  <h2 id="puzzle">Puzzle</h2>
+  
+
+  <p>The math expression is:</p>
+  <p id="expression" aria-live="polite"></p>
+  <form role="form"  aria-labelledby="puzzle">
+     
+  <div class="form-group" role="group" aria-label="Maths challenge" id="guessForm" aria-labelledby="guessLabel">
+  <p>Please type the solution in the text box below:</p>
+    <label id="guessLabel" for="guessInput">Your answer:</label>
+    <input type="number" id="guessInput" name="guessInput" required aria-required="true" />
+	<button type="submit" class="submit-button" aria-label="Submit" role="button">Submit</button>
+
+
+	<div class="form-group" id="statusMessage" role="status" aria-live="polite"></div>
+ 
+        <p id="result" aria-live="polite"></p>
+
+        <button id="newExpressionBtn" aria-label="Generate a new math expression">
+          Generate New Expression
+        </button>
+
+    </form>
+</div>
+
+<script src="./page2.11script.js"></script>
+</body>
+
+</html>
+

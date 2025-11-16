@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  color: #222;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+header, nav, main, footer {
+  padding: 1rem;
+}
+
+h1, h2, p {
+  text-align: center;
+}
+
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #000;
+}
+nav a:focus-visible {
+  outline: 3px solid #000;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+select, button {
+  background: #000;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+select:focus-visible, button:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+#statusMessage {
+  margin-top: 15px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 600px) {
+  main form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center;    /* Center horizontally */
+  justify-content: center;
+  text-align: center;     /* Center text inside */
+  margin-top: 20px;
+}
+
+.form-group p,
+.form-group label {
+  text-align: center;
+}
+
+.form-group input,
+.form-group button {
+  margin: 10px 0;
+  width: 200px; /* Optional: make input/button uniform */
+}
+
+#statusMessage,
+#result {
+  margin-top: 15px;
+  text-align: center;
+}
