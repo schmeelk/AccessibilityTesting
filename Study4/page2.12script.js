@@ -1,11 +1,15 @@
 
+ const statusMessage = document.getElementById('statusMessage');
+ const submitButton = document.querySelector('.submit-button');
+ const newExpressionBtn = document.getElementById('newExpressionBtn');
+ const guessInputField = document.getElementById('guessInput');
+ let variableName = 'x';
+ let variableValue, otherValue, actualValue;
+	
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('guessInput').focus();
   });
 
-
- let variableName = 'x';
-    let variableValue, otherValue, actualValue;
 
     function generateExpression() {
       variableValue = Math.floor(Math.random() * 10) + 1;
@@ -34,25 +38,33 @@ window.addEventListener('DOMContentLoaded', () => {
       if (window.MathJax) {
         MathJax.typesetPromise();
       }
+	  
+	  statusMessage.textContent = 'Status: new expression generated.';
+	  statusMessage.style.backgroundColor = '#000';
+      statusMessage.style.color = '#fff';
     }
 
     // Initial generation
     generateExpression();
 
-    document.getElementById('guessForm').addEventListener('submit', function(event) {
+    submitButton.addEventListener('click', () => {
       event.preventDefault();
+     console.log("In guessform submit");
       const guess = parseInt(document.getElementById('guessInput').value, 10);
       const resultEl = document.getElementById('result');
-
-      if (guess === actualValue) {
-        resultEl.textContent = "Correct! Well done.";
-        resultEl.style.color = "green";
-      } else {
-        resultEl.textContent = `Incorrect. The correct answer is ${actualValue}.`;
-        resultEl.style.color = "red";
-      }
+ 
+        if (guess === actualValue) {
+            statusMessage.textContent = 'Status: Success! The maths match!';
+            newExpressionBtn.focus();
+        } else {
+            statusMessage.textContent = 'Status: Incorrect. Please try maths again.';
+			document.getElementById("guessInput").value = "";
+            guessInputField.focus();
+        }
+        statusMessage.style.backgroundColor = '#000';
+        statusMessage.style.color = '#fff';
     });
 
-    document.getElementById('newExpressionBtn').addEventListener('click', generateExpression);
+ newExpressionBtn.addEventListener('click', generateExpression);
   
 

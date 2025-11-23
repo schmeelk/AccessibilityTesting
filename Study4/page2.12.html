@@ -16,54 +16,35 @@
 
 
 <div class="box">
+  <h1>Math Authentication with Variables (to baffle AI)</h1>
+  <h2>Instructions</h2>
+  <p>To authenticate yourself, please take the variable value, then complete the math equation below, and then submit your answer.</p>
 
+  <h2 id="puzzle">Puzzle</h2>
+  
 
-
-
-
-</div>
-
-
-
-<table role="presentation">
-  <caption>To authenticate yourself, please complete the math equation below and submit.</caption>
-  <tbody>
-
-    <tr>
-      <td>
-        <p>The math expression is:</p>
-        <p id="expression" aria-live="polite"></p>
-      </td>
-	      </tr>
-		      <tr>
-      <td>
-  <h2>Calculate the value of:</h2>
+  <p>The math expression is:</p>
+   <p id="expression" aria-live="polite"></p>
   <p id="varValue"></p>
   <p id="expression"></p>
+    <form role="form"  aria-labelledby="puzzle">
+     
+  <div class="form-group" role="group" aria-label="Maths challenge" id="guessForm" aria-labelledby="guessLabel">
+    <label id="guessLabel" for="guessInput">Please type the solution in the text box below:</label>
+    <input type="number" id="guessInput" name="guessInput" required aria-required="true" />
+	<button type="submit" class="submit-button" aria-label="Submit" role="button">Submit</button>
 
-  <form id="guessForm">
-    <label for="guessInput">Your guess:</label>
-    <input type="number" id="guessInput" required />
-    <button type="submit">Submit</button>
-  </form>
-        </form>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-			<div class="form-group" id="statusMessage" role="status" aria-live="polite"></div>
+
+	<div class="form-group" id="statusMessage" role="status" aria-live="polite"></div>
+ 
         <p id="result" aria-live="polite"></p>
 
         <button id="newExpressionBtn" aria-label="Generate a new math expression">
           Generate New Expression
         </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
-
+    </form>
+</div>
 
 <script src="./page2.12script.js"></script>
 	
