@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
         MathJax.typesetPromise();
       }
 	  
-	  statusMessage.textContent = 'Status: new expression generated.';
+	  statusMessage.textContent = 'Status: New expression generated.';
 	  statusMessage.style.backgroundColor = '#000';
       statusMessage.style.color = '#fff';
     }

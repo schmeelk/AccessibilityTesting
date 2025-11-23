@@ -12,7 +12,7 @@
       document.getElementById('expression').textContent = `${a} + ${b}`;
       document.getElementById('result').textContent = '';
       document.getElementById('guessInput').value = '';
-	  statusMessage.textContent = 'New expression generated.';
+	  statusMessage.textContent = 'Status: New expression generated.';
 	  statusMessage.style.backgroundColor = '#000';
       statusMessage.style.color = '#fff';
     }
@@ -31,10 +31,10 @@
       const resultEl = document.getElementById('result');
  
         if (guess === actualValue) {
-            statusMessage.textContent = 'Success! The maths match!';
+            statusMessage.textContent = 'Status: Success! The maths match!';
             newExpressionBtn.focus();
         } else {
-            statusMessage.textContent = 'Incorrect. Please try maths again.';
+            statusMessage.textContent = 'Status: Incorrect. Please try maths again.';
 			document.getElementById("guessInput").value = "";
             guessInputField.focus();
         }
