@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Animal: ['Bird', 'Cat', 'Dog', 'Duck']
     };
 
+    const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
 	let another1 = Number(params.get('another1') || 0);
 
@@ -76,7 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.pause();
         audio.currentTime = 0;
         audio.play();
-       
+		setTimeout(() => {
+			audio.pause();
+			// Optional: Reset the current time to 0 for the next play
+			audio.currentTime = 0; 
+		}, durationMs);
+	
     });
 
 
