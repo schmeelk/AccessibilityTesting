@@ -1,63 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="./ut.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Sound Category Authentication</title>
+  <link rel="stylesheet" href="ut1.1.css">
 </head>
-
-
 <body>
+ 
+  <header role="banner">
+    <h1>Animal Sound Category Authentication</h1>
+  </header>
 
-<!-- Site navigation menu -->
-<ul class="navbar">
-</ul>
+  <main id="instructions" role="main">
+    <h2 id="instructions">Instructions</h2>
+    <p>To authenticate, play the animal sound, identify it on list, and submit your choice.</p>
 
+    <h2 id="puzzle">Puzzle</h2>
+    <form role="form"  aria-labelledby="puzzle">
+     
+      <button type="button" class="play-button" aria-label="Play sound" role="button">Play Sound</button>
 
-To authenticate yourself, select the preferred sound category (Animal, Instrument, or Morse Code), play the sound, identify and match the sound to list name after listening to the sound, and then submit the choice for validation.
-<br>
-<br>
-<br>
-  
-</div>
+      <div class="form-group" role="group" aria-label="Sound choice selection">
+        <label for="soundChoice">Select the animal that made the sound:</label>
+        <select id="soundChoice" name="soundChoice" aria-label="Sound choice" role="combobox" aria-expanded="false"></select>
+      </div>
 
+      <button type="button" class="submit-button" aria-label="Submit choice" role="button">Submit</button>
 
-<table>
-  <tr>
-    <td>
+      <div id="statusMessage" role="status" aria-live="polite"></div>
 
-	 <label for="sounds">Choose a sound category:<br></label>
- 	 <select name="sounds" id="sounds">
- 	 <option value="Animal">Animal</option>
- 	 <option value="Instrument">Instrument</option>
- 	 <option value="MorseCode">Morse Code</option>
- 	 </select>
-
-    </td>
-    <td> 
-	    <button class="play-button"> Play Sound</button>
-    </td>
-    
-    <td>
-		 
- 		 <label for="soundChoice">Please select object that made <br> the sound from the following <br> sound list: </label>
- 		 <select name="soundChoice" id="soundChoice">
- 		 <option value="Bird">Bird</option>
- 		 <option value="Cat">Cat</option>
- 		 <option value="Dog">Dog</option>
- 		 <option value="Duck">Duck</option>
- 		 </select>
-	
-    </td>
-    <td> <button class="submit-button"> Submit</button></td>
-  </tr>
-</table> 
+	   <button class="reload-button">Try New Challenge</button>
+    </form>
+  </main>
 
 
+  <!--div id="debug" > </div-->
 
 
-
-<script src="./page1.1.script.js"></script>
-
-
+  <script src="page1.1.js"></script>
 </body>
 </html>
-
