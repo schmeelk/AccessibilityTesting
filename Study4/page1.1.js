@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
         soundPath = `./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
         audio.src = soundPath;
+		audio.preload = 'auto';
         audio.pause();
     }
 
