@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             soundChoiceMenu.appendChild(option);
         });
         
-		while (randomNumber < 1){
+		while (randomNum < 1){
 			randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
 		}
 		
