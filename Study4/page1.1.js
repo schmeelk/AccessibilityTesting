@@ -6,15 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const reloadButton = document.querySelector('.reload-button'); 
     const statusMessage = document.getElementById('statusMessage');
     const sounds = {
-        Animal: ['Bird', 'Cat', 'Dog', 'Duck']
+        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck']
     };
-
+	
+    
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
 	let another1 = Number(params.get('another1') || 0);
 
     let categoryChoice = 'Animal';
     let selectedAudio = '';
+	let soundPath = `'; ./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
     let randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
     let audio = new Audio();
     let inputMethod = 'mouse';
@@ -54,7 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
             option.textContent = soundName;
             soundChoiceMenu.appendChild(option);
         });
-        randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
+        
+		while (randomNumber < 1){
+			randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
+		}
+		
+		selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
+        soundPath = `./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
+        audio.src = soundPath;
+        audio.pause();
     }
 
 
@@ -71,10 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Play button
     playButton.addEventListener('click', () => {
 		console.log("Play button click detected");
-        selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
-        const soundPath = `./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
-        audio.src = soundPath;
-        audio.pause();
         audio.currentTime = 0;
         audio.play();
 		setTimeout(() => {
@@ -144,6 +150,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+	
+	    // Accessibility for dropdowns
+    [soundChoiceMenu].forEach(select => {
+        select.addEventListener('focus', () => select.setAttribute('aria-expanded', 'true'));
+        select.addEventListener('blur', () => select.setAttribute('aria-expanded', 'false'));
+        select.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                select.blur();
+            }
+        });
+    });
+	
+	
+	
+	
 
   
 });
