@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let categoryChoice = 'Animal';
     let selectedAudio = '';
-	let soundPath = `'; ./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
+	let soundPath = '';
     let randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
     let audio = new Audio();
     let inputMethod = 'mouse';
@@ -62,10 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		
 		selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
+		console.log("Selected audio " + selectedAudio);
         soundPath = `./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
+		console.log("Updated audio to " + soundPath);
         audio.src = soundPath;
 		audio.preload = 'auto';
         audio.pause();
+		console.log("Updated audio to " + soundPath);
     }
 
 
