@@ -125,6 +125,12 @@ playButton.addEventListener('click', () => {
   // Ensure selectedAudioName/randomNum reflect the current menu state
   randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
   playSelectedSound(categoryChoice, randomNum);
+  
+  setTimeout(() => {
+			audio.pause();
+			// Optional: Reset the current time to 0 for the next play
+			audio.currentTime = 0; 
+		}, durationMs);
 });
 
 
