@@ -5,24 +5,42 @@
 
 const params = new URLSearchParams(window.location.search);
 let another1 = Number(params.get('another1') || 0);
-let a, b, actualValue;
- 
-    // Function to generate a new binomial expression
+let variableName = 'x';
+let variableValue, otherValue, actualValue;
+	
+
+
     function generateExpression() {
-      a = Math.floor(Math.random() * 10) + 1;
-      b = Math.floor(Math.random() * 10) + 1;
-      actualValue = a + b;
-      document.getElementById('expression').textContent = `${a} + ${b}`;
+      variableValue = Math.floor(Math.random() * 10) + 1;
+      otherValue = Math.floor(Math.random() * 10) + 1;
+
+      // Randomly decide if variable is first or second
+      let isVarFirst = Math.random() < 0.5;
+      let expressionLatex;
+      if (isVarFirst) {
+        actualValue = variableValue + otherValue;
+        expressionLatex = `${variableName} + ${otherValue}`;
+      } else {
+        actualValue = otherValue + variableValue;
+        expressionLatex = `${otherValue} + ${variableName}`;
+      }
+
+      document.getElementById('varValue').innerHTML =
+        `Let ${variableName} = ${variableValue}, then what does ${expressionLatex} =`;
+
       document.getElementById('result').textContent = '';
       document.getElementById('guessInput').value = '';
 
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+	  
     }
 
-
-    // Initial expression generation
+    // Initial generation
     generateExpression();
 
-    submitButton.addEventListener('click', () => {
+  submitButton.addEventListener('click', () => {
       event.preventDefault();
 	  console.log("In guessform submit");
       const guess = parseInt(document.getElementById('guessInput').value, 10);

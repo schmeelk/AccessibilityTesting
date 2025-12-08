@@ -1,24 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="./ut2.1.css">
+  <link rel="stylesheet" href="./ut2.11.css">
+
+  
 </head>
 
+
 <body>
+
 <!-- Site navigation menu -->
 <ul class="navbar">
 </ul>
 
+
+
 <div class="box">
-  <h1>Maths Authentication</h1>
+  <h1>Algebraic Math Authentication (more difficult for AI)</h1>
   <h2>Instructions</h2>
-  <p>To authenticate yourself, please complete the math equation below and submit your answer.</p>
+  <p>To authenticate yourself, please solve the math equation below, and then submit your answer.</p>
 
   <h2 id="puzzle">Puzzle</h2>
-  
-  <p>The math expression is:</p>
-  <p id="expression" aria-live="polite"></p>
-  <form role="form"  aria-labelledby="puzzle">
+ <p> 
+ <section id="varValue" aria-live="polite"></section> </p>
+ 
+  <p id="expression"></p>
+    <form role="form"  aria-labelledby="puzzle">
      
   <div class="form-group" role="group" aria-label="Maths challenge" id="guessForm" aria-labelledby="guessLabel">
     <label id="guessLabel" for="guessInput">Please type the solution in the text box below:</label>
@@ -30,13 +37,14 @@
  
         <p id="result" aria-live="polite"></p>
 
-        <button class="reload-button">Try another one.</button>
+  <button class="reload-button">Try another one.</button>
 
     </form>
 </div>
 
-<script src="./page2.1script.js"></script>
-</body>
+<script src="./page2.2script.js"></script>
+	
 
+</body>
 </html>
 
