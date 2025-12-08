@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
 	let another1 = Number(params.get('another1') || 0);
+	let test1 = String(params.get('test1') || '');
+	let test2 = String(params.get('test2') || '');
 
     let categoryChoice = 'Animal';
     let selectedAudio = '';
@@ -56,9 +58,17 @@ document.addEventListener('DOMContentLoaded', () => {
             option.textContent = soundName;
             soundChoiceMenu.appendChild(option);
         });
-        
+        console.log("Random number " + randomNum);
+		console.log("Selected audio in update sound is " + selectedAudio + " and test1 " + test1 + " and test2 " + test2);
+		if (selectedAudio  ===  test1 || selectedAudio  ===  test2){
+				randomNum = 0;
+		}
+		
 		while (randomNum < 1){
 			randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
+			selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
+			console.log("Selected audio in update sound is " + selectedAudio + "and test1 " + test1 + " and test2 " + test2);
+			
 		}
 		
 		selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
@@ -103,25 +113,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedValue = soundChoiceMenu.value;
         if (selectedAudio.toLowerCase() === selectedValue.toLowerCase()) {
 			if(another1 < 2){
-				statusMessage.textContent = 'That was successful, try another one';
+				statusMessage.textContent = 'That was successful.';
 				submitButton.style.display = 'none';
 				another1 = another1 + 1;
+				if(another1 < 2){
+					test1 = selectedAudio;
+				}else{
+					test2 = selectedAudio;
+				}
 			}else{ // 3rd and final try
 				statusMessage.textContent = 'That was successful. Thank you for trying three.';
 				another1 = another1 + 1;
 				submitButton.style.display = 'none';
 				reloadButton.style.display = 'none';
+				if(another1 < 2){
+					test1 = selectedAudio;
+				}else{
+					test2 = selectedAudio;
+				}
 			}
         } else {
 			if(another1 < 2){
-				statusMessage.textContent = 'That was unsuccessful. Please try again.';
+				statusMessage.textContent = 'That was unsuccessful.';
 				submitButton.style.display = 'none';
 				another1 = another1 + 1;
+				if(another1 < 2){
+					test1 = selectedAudio;
+				}else{
+					test2 = selectedAudio;
+				}
 			}else{ //3rd and final try
 				statusMessage.textContent = 'That was unsuccessful.  Thank you for trying three.';
 				another1 = another1 + 1;
 				submitButton.style.display = 'none';
 				reloadButton.style.display = 'none';
+				if(another1 < 2){
+					test1 = selectedAudio;
+				}else{
+					test2 = selectedAudio;
+				}
 			}
         }
         statusMessage.style.backgroundColor = '#000';
@@ -137,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		e.preventDefault();
 		e.stopPropagation();
 		const url = new URL(window.location.href);
-		url.search = new URLSearchParams({ another1: String(another1) }).toString();
+		url.search = new URLSearchParams({ another1: String(another1), test1: String(test1), test2: String(test2) }).toString();
 		window.location.replace(url.toString());
 		return;
 	});
