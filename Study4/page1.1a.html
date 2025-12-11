@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Sound Category Authentication</title>
+  <link rel="stylesheet" href="ut1.1.css">
+</head>
+<body>
+ 
+  <header role="banner">
+    <h1>Animal Sound Category Authentication</h1>
+  </header>
+
+  <main id="instructions" role="main">
+    <h2 id="instructions">Instructions</h2>
+    <p>To authenticate, play the animal sound, identify it on list, and submit your choice.</p>
+
+    <h2 id="puzzle">Puzzle</h2>
+    <form role="form"  aria-labelledby="puzzle">
+     
+      <button type="button" class="play-button" aria-label="Play sound" role="button">Play Sound</button>
+
+      <div class="form-group" role="group" aria-label="Sound choice selection">
+        <label for="soundChoice">Select the animal that made the sound:</label>
+        <select id="soundChoice" name="soundChoice" aria-label="Sound choice" role="combobox" aria-expanded="false"></select>
+      </div>
+
+      <button type="button" class="submit-button" aria-label="Submit choice" role="button">Submit</button>
+
+      <div id="statusMessage" role="status" aria-live="polite"></div>
+
+	   <button class="reload-button">Try another one.</button>
+    </form>
+  </main>
+
+
+  <!--div id="debug" > </div-->
+
+
+  <script src="page1.1a.js"></script>
+</body>
+</html>
