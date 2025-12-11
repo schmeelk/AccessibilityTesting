@@ -76,13 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Random number " + randomNum);
 		console.log("Selected audio in update sound is " + selectedAudio + " and test1 " + test1 + " and test2 " + test2);
 		if (selectedAudio  ===  test1 || selectedAudio  ===  test2){
+			    console.log("Detected a reselection of test 1 " + test1 + " or test 2 " + test2); 
 				randomNum = 0;
 		}
 		
 		while (randomNum < 1){
 			randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
 			selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
-			console.log("Selected audio in update sound is " + selectedAudio + "and test1 " + test1 + " and test2 " + test2);
+			console.log("Selected audio in update sound is " + selectedAudio + " and test1 " + test1 + " and test2 " + test2);
+			if (selectedAudio  ===  test1 || selectedAudio  ===  test2){
+			    console.log("Detected a reselection of test 1 " + test1 + " or test 2 " + test2); 
+				randomNum = 0;
+			}
 			
 		}
 		
