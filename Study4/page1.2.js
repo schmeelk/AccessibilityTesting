@@ -1,7 +1,7 @@
-const dogSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/dog.mp3');
-const catSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/cat.mp3');
-const duckSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/duck.mp3');
-const birdSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/bird.mp3');
+const pianoSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Instrument/piano.mp3');
+const drumSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Instrument/drum.mp3');
+const trumpetSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Instrument/trumpet.mp3');
+const guitarSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Instrument/guitar.mp3');
 
 window.addEventListener('load', updateSoundChoices);
 
@@ -13,18 +13,18 @@ window.addEventListener('load', updateSoundChoices);
 	const playButton = document.querySelector('.play-button');
 	const submitButton = document.querySelector('.submit-button');
 	
-    const sounds = {
-        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck']
+  const sounds = {
+        Instrument: [' ', 'Piano', 'Drum', 'Trumpet', 'Guitar']
     };
 	
-	dogSound.preload = 'auto';
-	dogSound.pause();
-    catSound.preload = 'auto';
-	catSound.pause();
-    duckSound.preload = 'auto';
-	duckSound.pause();
-    birdSound.preload = 'auto';
-	birdSound.pause();
+	pianoSound.preload = 'auto';
+	pianoSound.pause();
+    drumSound.preload = 'auto';
+	drumSound.pause();
+    trumpetSound.preload = 'auto';
+	trumpetSound.pause();
+    guitarSound.preload = 'auto';
+	guitarSound.pause();
     
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
@@ -32,7 +32,7 @@ window.addEventListener('load', updateSoundChoices);
 	let test1 = String(params.get('test1') || '');
 	let test2 = String(params.get('test2') || '');
 
-    let categoryChoice = 'Animal';
+    let categoryChoice = 'Instrument';
     let selectedAudio = '';
 	let soundPath = '';
     let randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
@@ -98,17 +98,17 @@ window.addEventListener('load', updateSoundChoices);
 		//audio.preload = 'auto';
         //audio.pause();
 		//https://soundtools.io/audio-trimmer/
-		if(selectedAudio == 'dog'){
-			audio = dogSound;
+		if(selectedAudio == 'piano'){
+			audio = pianoSound;
 		}
-		if (selectedAudio == 'cat'){
-			audio = catSound;
+		if (selectedAudio == 'drum'){
+			audio = drumSound;
 		}
-		if (selectedAudio == 'duck'){
-			audio = duckSound;
+		if (selectedAudio == 'trumpet'){
+			audio = trumpetSound;
 		}
-		if (selectedAudio == 'bird'){
-			audio = birdSound;
+		if (selectedAudio == 'guitar'){
+			audio = guitarSound;
 		}
 		console.log("Updated audio to " + soundPath);
 		console.log("Audio is " + audio);
@@ -136,7 +136,7 @@ window.addEventListener('load', updateSoundChoices);
 
 
     // Submit button
-       function onSubmitButtonClick() {
+    function onSubmitButtonClick() {
 		console.log("Submit button click detected");
         audio.pause();
         const selectedValue = soundChoiceMenu.value;
