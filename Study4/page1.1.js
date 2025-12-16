@@ -1,14 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
+const dogSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/dog.mp3');
+const catSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/cat.mp3');
+const duckSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/duck.mp3');
+const birdSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/bird.mp3');
+
+window.addEventListener('load', updateSoundChoices);
 
     const soundChoiceMenu = document.getElementById('soundChoice');
-    const playButton = document.querySelector('.play-button');
-    const submitButton = document.querySelector('.submit-button');
+
+
     const reloadButton = document.querySelector('.reload-button'); 
     const statusMessage = document.getElementById('statusMessage');
+	const playButton = document.querySelector('.play-button');
+	const submitButton = document.querySelector('.submit-button');
+	
     const sounds = {
         Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck']
     };
 	
+	dogSound.preload = 'auto';
+	dogSound.pause();
+    catSound.preload = 'auto';
+	catSound.pause();
+    duckSound.preload = 'auto';
+	duckSound.pause();
+    birdSound.preload = 'auto';
+	birdSound.pause();
     
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
@@ -34,9 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 
 
-
-    updateSoundChoices();
-
     function logMessage(msg) {
         console.log(msg);
         const debugEl = document.getElementById('debug');
@@ -60,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         console.log("Random number " + randomNum);
 		console.log("Selected audio in update sound is " + selectedAudio + " and test1 " + test1 + " and test2 " + test2);
+		
 		if (selectedAudio  ===  test1 || selectedAudio  ===  test2){
+				console.log("Detected a reselection of test 1 " + test1 + " or test 2 " + test2); 
 				randomNum = 0;
 		}
 		
@@ -68,17 +83,38 @@ document.addEventListener('DOMContentLoaded', () => {
 			randomNum = Math.floor(Math.random() * sounds[categoryChoice].length);
 			selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
 			console.log("Selected audio in update sound is " + selectedAudio + "and test1 " + test1 + " and test2 " + test2);
+			if (selectedAudio  ===  test1 || selectedAudio  ===  test2){
+			    console.log("Detected a reselection of test 1 " + test1 + " or test 2 " + test2); 
+				randomNum = 0;
+			}
 			
 		}
 		
 		selectedAudio = sounds[categoryChoice][randomNum].toLowerCase();
 		console.log("Selected audio " + selectedAudio);
-        soundPath = `./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
+        //soundPath = `./media/captcha-sounds/pixabay-com-sound-effects/Med/${categoryChoice}/${selectedAudio}.mp3`;
+		//console.log("Updated audio to " + soundPath);
+        //audio.src = soundPath;
+		//audio.preload = 'auto';
+        //audio.pause();
+		//https://soundtools.io/audio-trimmer/
+		if(selectedAudio == 'dog'){
+			audio = dogSound;
+		}
+		if (selectedAudio == 'cat'){
+			audio = catSound;
+		}
+		if (selectedAudio == 'duck'){
+			audio = duckSound;
+		}
+		if (selectedAudio == 'bird'){
+			audio = birdSound;
+		}
 		console.log("Updated audio to " + soundPath);
-        audio.src = soundPath;
-		audio.preload = 'auto';
-        audio.pause();
-		console.log("Updated audio to " + soundPath);
+		console.log("Audio is " + audio);
+		
+		playButton.addEventListener('click', onPlaySoundButtonClick);
+		submitButton.addEventListener('click', onSubmitButtonClick);
     }
 
 
@@ -93,17 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Play button
-    playButton.addEventListener('click', () => {
+    function onPlaySoundButtonClick() {
 		console.log("Play button click detected");
-        audio.currentTime = 0;
-        audio.play();
-		setTimeout(() => {
-			audio.pause();
-			// Optional: Reset the current time to 0 for the next play
-			audio.currentTime = 0; 
-		}, durationMs);
-	
-    });
+       audio.play();
+    }
 
 
     // Submit button
@@ -202,4 +231,3 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 
   
-});
