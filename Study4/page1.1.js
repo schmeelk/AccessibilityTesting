@@ -2,6 +2,7 @@ const dogSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med
 const catSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/cat.mp3');
 const duckSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/duck.mp3');
 const birdSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/bird.mp3');
+const cowSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/cow.mp3');
 
 window.addEventListener('load', updateSoundChoices);
 
@@ -14,7 +15,7 @@ window.addEventListener('load', updateSoundChoices);
 	const submitButton = document.querySelector('.submit-button');
 	
     const sounds = {
-        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck']
+        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck', 'Cow']
     };
 	
 	dogSound.preload = 'auto';
@@ -25,6 +26,8 @@ window.addEventListener('load', updateSoundChoices);
 	duckSound.pause();
     birdSound.preload = 'auto';
 	birdSound.pause();
+	cowSound.preload = 'auto';
+	cowSound.pause();
     
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
@@ -110,6 +113,9 @@ window.addEventListener('load', updateSoundChoices);
 		}
 		if (selectedAudio == 'bird'){
 			audio = birdSound;
+		}
+		if (selectedAudio == 'cow'){
+			audio = cowSound;
 		}
 		console.log("Updated audio to " + soundPath);
 		console.log("Audio is " + audio);
