@@ -3,6 +3,8 @@ const catSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med
 const duckSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/duck.mp3');
 const birdSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/bird.mp3');
 const cowSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/cow.mp3');
+const sheepSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/sheep.mp3');
+const beeSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/bee.mp3');
 
 window.addEventListener('load', updateSoundChoices);
 
@@ -15,7 +17,7 @@ window.addEventListener('load', updateSoundChoices);
 	const submitButton = document.querySelector('.submit-button');
 	
     const sounds = {
-        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck', 'Cow']
+        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck', 'Cow', 'Sheep', 'Bee']
     };
 	
 	dogSound.preload = 'auto';
@@ -28,6 +30,10 @@ window.addEventListener('load', updateSoundChoices);
 	birdSound.pause();
 	cowSound.preload = 'auto';
 	cowSound.pause();
+	sheepSound.preload = 'auto';
+	sheepSound.pause();
+	beeSound.preload = 'auto';
+	beeSound.pause();
     
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
@@ -116,6 +122,12 @@ window.addEventListener('load', updateSoundChoices);
 		}
 		if (selectedAudio == 'cow'){
 			audio = cowSound;
+		}
+		if (selectedAudio == 'sheep'){
+			audio = sheepSound;
+		}
+		if (selectedAudio == 'bee'){
+			audio = beeSound;
 		}
 		console.log("Updated audio to " + soundPath);
 		console.log("Audio is " + audio);
