@@ -5,6 +5,13 @@ const birdSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Me
 const cowSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/cow.mp3');
 const sheepSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/sheep.mp3');
 const beeSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Animal/bee.mp3');
+const elephantSound = new Audio('./media/captcha-sounds/bbc/Animal/elephant.mp3');
+const frogSound = new Audio('./media/captcha-sounds/bbc/Animal/frog.mp3');
+const goatSound = new Audio('./media/captcha-sounds/bbc/Animal/goat.mp3');
+const horseSound = new Audio('./media/captcha-sounds/bbc/Animal/horse.mp3');
+const lionSound = new Audio('./media/captcha-sounds/bbc/Animal/lion.mp3');
+const pigSound = new Audio('./media/captcha-sounds/bbc/Animal/pig.mp3');
+const snakeSound = new Audio('./media/captcha-sounds/bbc/Animal/snake.mp3');
 
 window.addEventListener('load', updateSoundChoices);
 
@@ -17,7 +24,7 @@ window.addEventListener('load', updateSoundChoices);
 	const submitButton = document.querySelector('.submit-button');
 	
     const sounds = {
-        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck', 'Cow', 'Sheep', 'Bee']
+        Animal: [' ', 'Bird', 'Cat', 'Dog', 'Duck', 'Cow', 'Sheep', 'Bee', 'Elephant', 'Frog', 'Goat', 'Horse', 'Lion', 'Pig', 'Snake']
     };
 	
 	dogSound.preload = 'auto';
@@ -34,7 +41,21 @@ window.addEventListener('load', updateSoundChoices);
 	sheepSound.pause();
 	beeSound.preload = 'auto';
 	beeSound.pause();
-    
+	elephantSound.preload = 'auto';
+    elephantSound.pause();
+	frogSound.preload = 'auto';
+    frogSound.pause();
+	goatSound.preload = 'auto';
+    goatSound.pause();
+	horseSound.preload = 'auto';
+    horseSound.pause();
+	lionSound.preload = 'auto';
+    lionSound.pause();
+	pigSound.preload = 'auto';
+    pigSound.pause();
+	snakeSound.preload = 'auto';
+    snakeSound.pause();
+	
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
 	let another1 = Number(params.get('another1') || 0);
@@ -129,6 +150,28 @@ window.addEventListener('load', updateSoundChoices);
 		if (selectedAudio == 'bee'){
 			audio = beeSound;
 		}
+		if (selectedAudio == 'elephant'){
+			audio = elephantSound;
+		}
+		if (selectedAudio == 'frog'){
+			audio = frogSound;
+		}
+		if (selectedAudio == 'goat'){
+			audio = goatSound;
+		}
+		if (selectedAudio == 'horse'){
+			audio = horseSound;
+		}
+		if (selectedAudio == 'lion'){
+			audio = lionSound;
+		}
+		if (selectedAudio == 'pig'){
+			audio = pigSound;
+		}
+		if (selectedAudio == 'snake'){
+			audio = snakeSound;
+		}
+
 		console.log("Updated audio to " + soundPath);
 		console.log("Audio is " + audio);
 		
