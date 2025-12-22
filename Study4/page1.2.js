@@ -2,6 +2,18 @@ const pianoSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/M
 const drumSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Instrument/drum.mp3');
 const trumpetSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Instrument/trumpet.mp3');
 const guitarSound = new Audio('./media/captcha-sounds/pixabay-com-sound-effects/Med/Instrument/guitar.mp3');
+const banjoSound = new Audio('./media/captcha-sounds/bbc/Instrument/banjo.mp3');
+const bassoonSound = new Audio('./media/captcha-sounds/bbc/Instrument/bassoon.mp3');
+const celloSound = new Audio('./media/captcha-sounds/bbc/Instrument/cello.mp3');
+const clarinetSound = new Audio('./media/captcha-sounds/bbc/Instrument/clarinet.mp3');
+const doublebassSound = new Audio('./media/captcha-sounds/bbc/Instrument/double-bass.mp3');
+const fluteSound = new Audio('./media/captcha-sounds/bbc/Instrument/flute.mp3');
+const oboeSound = new Audio('./media/captcha-sounds/bbc/Instrument/oboe.mp3');
+const saxophoneSound = new Audio('./media/captcha-sounds/bbc/Instrument/saxophone.mp3');
+const tromboneSound = new Audio('./media/captcha-sounds/bbc/Instrument/trombone.mp3');
+const tubaSound = new Audio('./media/captcha-sounds/bbc/Instrument/tuba.mp3');
+const violinSound = new Audio('./media/captcha-sounds/bbc/Instrument/violin.mp3');
+
 
 window.addEventListener('load', updateSoundChoices);
 
@@ -14,7 +26,7 @@ window.addEventListener('load', updateSoundChoices);
 	const submitButton = document.querySelector('.submit-button');
 	
   const sounds = {
-        Instrument: [' ', 'Piano', 'Drum', 'Trumpet', 'Guitar']
+        Instrument: [' ', 'Piano', 'Drum', 'Trumpet', 'Guitar', 'Banjo', 'Bassoon', 'Cello', 'Clarinet', 'Double-bass', 'Flute', 'Oboe', 'Saxophone', 'Trombone', 'Tuba', ]
     };
 	
 	pianoSound.preload = 'auto';
@@ -25,7 +37,30 @@ window.addEventListener('load', updateSoundChoices);
 	trumpetSound.pause();
     guitarSound.preload = 'auto';
 	guitarSound.pause();
-    
+    banjoSound.preload = 'auto';
+	banjoSound.pause();
+    bassoonSound.preload = 'auto';
+	bassoonSound.pause();	
+    celloSound.preload = 'auto';
+	celloSound.pause();
+    clarinetSound.preload = 'auto';
+	clarinetSound.pause();			
+    doublebassSound.preload = 'auto';
+	doublebassSound.pause();
+    fluteSound.preload = 'auto';
+	fluteSound.pause();		
+    oboeSound.preload = 'auto';
+	oboeSound.pause();
+    saxophoneSound.preload = 'auto';
+	saxophoneSound.pause();		
+    tromboneSound.preload = 'auto';
+	tromboneSound.pause();
+    tubaSound.preload = 'auto';
+	tubaSound.pause();	
+    violinSound.preload = 'auto';
+	violinSound.pause();
+	
+
     const durationMs = 200;
 	const params = new URLSearchParams(window.location.search);
 	let another1 = Number(params.get('another1') || 0);
@@ -111,6 +146,40 @@ window.addEventListener('load', updateSoundChoices);
 		if (selectedAudio == 'guitar'){
 			audio = guitarSound;
 		}
+		if(selectedAudio == 'banjo'){
+			audio = banjoSound;
+		}
+		if (selectedAudio == 'bassoon'){
+			audio = bassoonSound;
+		}
+		if (selectedAudio == 'cello'){
+			audio = celloSound;
+		}		
+		if (selectedAudio == 'clarinet'){
+			audio = clarinetSound;
+		}
+		if(selectedAudio == 'double-bass'){
+			audio = doublebassSound;
+		}
+		if (selectedAudio == 'flute'){
+			audio = fluteSound;
+		}
+		if (selectedAudio == 'oboe'){
+			audio = oboeSound;
+		}
+		if (selectedAudio == 'saxophone'){
+			audio = saxophoneSound;
+		}
+		if(selectedAudio == 'trombone'){
+			audio = tromboneSound;
+		}
+		if (selectedAudio == 'tuba'){
+			audio = tubaSound;
+		}		
+		if (selectedAudio == 'violin'){
+			audio = violinSound;
+		}
+
 		console.log("Updated audio to " + soundPath);
 		console.log("Audio is " + audio);
 		
